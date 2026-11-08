@@ -1,0 +1,42 @@
+<%- include('partials/header', { title: 'Employees' }) %>
+
+<div class="header">
+  <h1>Admin Console</h1>
+  <a class="btn btn-primary" href="/employees/add">+ Add employee</a>
+</div>
+
+<% if (message) { %>
+  <div class="alert alert-success"><%= message %></div>
+<% } %>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Age</th>
+      <th>Skills</th>
+      <th>Title</th>
+      <th>Update</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (employees.length === 0) { %>
+      <tr><td colspan="7" class="empty">No employees yet.</td></tr>
+    <% } %>
+    <% employees.forEach((e) => { %>
+      <tr>
+        <td><%= e.id %></td>
+        <td><%= e.username %></td>
+        <td><%= e.age %></td>
+        <td><%= e.skills %></td>
+        <td><%= e.title %></td>
+        <td><a class="btn btn-edit" href="/employees/<%= e.id %>/edit">Update</a></td>
+        <td><a class="btn btn-danger" href="/employees/<%= e.id %>/delete">Delete</a></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,16 @@
+<label for="username">Username</label>
+<input id="username" name="username" type="text" value="<%= values.username %>" placeholder="e.g. john">
+
+<label for="age">Age</label>
+<input id="age" name="age" type="number" value="<%= values.age %>" placeholder="e.g. 25">
+
+<label for="skills">Skills (tech skills)</label>
+<textarea id="skills" name="skills" rows="3" placeholder="e.g. Typescript, Node.js, SQL"><%= values.skills %></textarea>
+
+<label for="title_id">Title</label>
+<select id="title_id" name="title_id">
+  <option value="">-- select title --</option>
+  <% titles.forEach((t) => { %>
+    <option value="<%= t.id %>" <%= String(t.id) === String(values.title_id) ? 'selected' : '' %>><%= t.name %></option>
+  <% }) %>
+</select>
